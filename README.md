@@ -21,5 +21,5 @@ There are few environment created:
   - prod
 
 environment specific variables:  
-      - CLOUDHUB_USERNAME
-      -  CLOUDHUB_PASSWORD
+  - CLOUDHUB_USERNAME
+  - CLOUDHUB_PASSWORD
