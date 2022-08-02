@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+	<configuration-properties doc:name="Configuration properties" doc:id="23284c6b-1a56-4e46-b9ad-9bc8cf1c69b2" file="properties/${mule.env}-config.yaml" />
+	<global-property doc:name="Global Property" doc:id="29f22bd3-3c9f-4343-b810-79e22449afad" name="mule.env" value="local" />
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="32279abe-e100-49ab-8826-02d9654f292e" file="properties/${mule.env}-secure-config.yaml" key="${mule.encryption.key}" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
+	<global-property doc:name="Global Property" doc:id="02d12632-7524-431c-98b7-4cd47e3c0eaf" name="mule.encryption.key" value="${mule.encryption.key}" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7bde13f8-9aed-4aec-b0df-2d5d5e0f48af" >
+		<http:listener-connection host="0.0.0.0" port="8091">
+			<tls:context >
+				<tls:key-store type="jks" path="security/keystore.jks" keyPassword="${secure::https.keystore.password}" password="${secure::https.keystore.password}"/>
+			</tls:context>
+		</http:listener-connection>
+	</http:listener-config>
+<import doc:name="Import" doc:id="83743815-c4c7-4e44-807e-180759aa012f" file="global-error-handlers.xml" />
+</mule>

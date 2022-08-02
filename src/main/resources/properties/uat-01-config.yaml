@@ -1,0 +1,10 @@
+#properties for the stg environment
+  
+#Http Listener Configuration
+https:
+  protocol: "HTTPS"
+  host: "0.0.0.0"
+  readTimeout: "30000"
+  private:
+    port: "8082"
+ 
