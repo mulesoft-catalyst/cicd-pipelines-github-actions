@@ -1,0 +1,47 @@
+name: ci_cd_pipeline_release_stage_prod.yml
+
+# Run on new release creation or when manually triggered
+on:
+  workflow_dispatch:
+    inputs:
+      releaseType:
+        description: 'Where to release (staging or prod)?'     
+        required: true
+        default: 'staging'
+env:
+  ## Cloudhub Properties
+  CLOUDHUB_WORKERS: 2
+  CLOUDHUB_WORKER_TYPE: MICRO
+  CLOUDHUB_REGION: us-east-01  
+
+  ## API specific 
+  HTTP_PRIVATE_PORT: 8091  
+
+jobs:
+  staging:
+    uses: ./.github/workflows/build_deploy_reusable.yml
+    with:
+      CLOUDHUB_ENVIRONMENT: "uat-01"
+      GITHUB_ENVIRONMENT: "staging"      
+      CLOUDHUB_WORKERS: "1"
+      CLOUDHUB_WORKER_TYPE: "MICRO"
+      CLOUDHUB_REGION: "ca-central-1"
+      HTTP_PRIVATE_PORT: "8091"
+    secrets:
+      CLOUDHUB_USERNAME: ${{ secrets.CLOUDHUB_USERNAME }}       
+      CLOUDHUB_PASSWORD : ${{ secrets.CLOUDHUB_PASSWORD }}
+
+  prod:
+    if: github.event.inputs.releaseType == 'prod'  
+    needs: [staging]
+    uses: ./.github/workflows/build_deploy_reusable.yml
+    with:
+      CLOUDHUB_ENVIRONMENT: "prod-01"
+      GITHUB_ENVIRONMENT: "prod"      
+      CLOUDHUB_WORKERS: "1"
+      CLOUDHUB_WORKER_TYPE: "MICRO"
+      CLOUDHUB_REGION: "ca-central-1"
+      HTTP_PRIVATE_PORT: "8091"
+    secrets:
+      CLOUDHUB_USERNAME: ${{ secrets.CLOUDHUB_USERNAME }}        
+      CLOUDHUB_PASSWORD : ${{ secrets.CLOUDHUB_PASSWORD }}
