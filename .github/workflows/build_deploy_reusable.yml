@@ -25,15 +25,12 @@ on:
         required: true    
       CLOUDHUB_PASSWORD:
         required: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ inputs.GITHUB_ENVIRONMENT }}    
     steps:
-    - run: |
-        echo "Subflow is being called.."
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJSON(github) }}
@@ -50,7 +47,11 @@ jobs:
         cache: 'maven'
         java-version: 8
         server-id: github
-        
+
+    - uses: s4u/maven-settings-action@v2.6.0
+      with:
+        servers: '[{"id": "mule-connected-app", "username": "${{ inputs.GITHUB_ENVIRONMENT}}", "password": "${{ inputs.GITHUB_ENVIRONMENT }}"}]'
+
     - name: JOB settings DETAILS
       run: |
         cat /home/runner/.m2/settings.xml
@@ -97,5 +98,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         
     - name: Deploy for ${{ github.event.ref }} branch
-      run: echo fake-deploy
-      #run: mvn -U -V -e -B -DskipTests deploy --file pom.xml -DmuleDeploy -Danypoint.userName=$anypoint_userName -Danypoint.password=MuleSoftYey1! -Dcloudhub.environment=dev -Dcloudhub.workerType=MICRO -Dcloudhub.workers=1 -Dcloudhub.region=ca-central-1 -Dmule.encryption.key=hh1234 -Dhttp.private.port=8091
+      run: |
+        mvn -U -V -e -B -DskipTests deploy --file pom.xml -DmuleDeploy \
+        -Danypoint.userName=${{ secrets.CLOUDHUB_USERNAME}} \
+        -Danypoint.password=${{ secrets.CLOUDHUB_PASSWORD}} \
+        -Dcloudhub.environment=${{ inputs.CLOUDHUB_ENVIRONMENT}} \
+        -Dcloudhub.workerType=${{ inputs.CLOUDHUB_WORKER_TYPE}} \
+        -Dcloudhub.workers=${{ inputs.CLOUDHUB_WORKERS}} \
+        -Dcloudhub.region=${{ inputs.CLOUDHUB_REGION}} \
+        -Dhttp.private.port=${{ inputs.HTTP_PRIVATE_PORT}} \
