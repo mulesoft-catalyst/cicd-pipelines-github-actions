@@ -1,9 +1,9 @@
 # github-action-mule
 There are mainly two branches. Aug/1/2021 :
 
-main
+- main
 
-develop
+- develop
 
 
 two entry points for github actions:
@@ -19,6 +19,7 @@ There are few environment created:
   - qa
   - staging
   - prod
+
 environment specific variables:  
-      CLOUDHUB_USERNAME
-      CLOUDHUB_PASSWORD
+      - CLOUDHUB_USERNAME
+      -  CLOUDHUB_PASSWORD
