@@ -1,0 +1,13 @@
+#properties for the local environment
+ 
+api:
+  id: "123456" 
+   
+#Http Listener Configuration
+https:
+  protocol: "HTTP"
+  host: "0.0.0.0"
+  readTimeout: "30000"
+  private:
+    port: "8081"
+ 

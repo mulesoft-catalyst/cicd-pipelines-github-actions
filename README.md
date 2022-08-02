@@ -1,2 +1,1 @@
-# cicd-pipelines-github-actions
-github-action-mule
+# github-action-mule
