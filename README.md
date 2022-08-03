@@ -23,3 +23,7 @@ There are few environment created [ this is optional for private repo as environ
 environment specific variables:  
   - CLOUDHUB_USERNAME
   - CLOUDHUB_PASSWORD
+
+To run/try this example, 
+- Fork this repo 
+- configure your fork and setup your environment and secrets mentioned above
