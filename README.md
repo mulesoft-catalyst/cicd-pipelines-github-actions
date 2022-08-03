@@ -1,10 +1,8 @@
-# github-action-mule
+<!-- CICD Pipelines for mule application deployment to cloudhub using GitHub Actions  -->
+# Branch Details
 There are mainly two branches. Aug/1/2021 :
-
-- main
-
-- develop
-
+1. main
+2. develop
 
 two entry points for github actions for each branches and build_deploy_reusable.yml is re-usable workflow file:
 
@@ -13,17 +11,20 @@ two entry points for github actions for each branches and build_deploy_reusable.
 
 .github/workflows/ci_cd_pipeline_release_stage_prod.yml@main
   This is manually triggered. asks user input in which environment you want to push the release.
-  
+
+# Environment and Secrets Setup
+## Environment
 There are few environment created [ this is optional for private repo as environment is not supported in private repo ]:
-  - dev
-  - qa
-  - staging
-  - prod
+1. dev
+2. qa
+3. staging
+4. prod
+## Environment Secrets
+Environment specific variables:  
+1. CLOUDHUB_USERNAME
+2. CLOUDHUB_PASSWORD
 
-environment specific variables:  
-  - CLOUDHUB_USERNAME
-  - CLOUDHUB_PASSWORD
-
-To run/try this example, 
-- Fork this repo 
-- configure your fork and setup your environment and secrets mentioned above
+# How to Trigger pipeline
+1. Fork this repo 
+2. configure your fork and setup your environment and secrets mentioned above
+3. Trigger pipeline either manually, by PR or cronjob schdeduled
