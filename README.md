@@ -28,3 +28,16 @@ Environment specific variables:
 1. Fork this repo 
 2. configure your fork and setup your environment and secrets mentioned above
 3. Trigger pipeline either manually, by PR or cronjob schdeduled
+
+# Features
+## Mule Application
+1. Mule Application compile, build, test, package [Aug/2021]
+2. Mule Application release prepare and perform [Aug/2021]
+3. CloudHub Deployment using username/password [Aug/2021]
+## GitHub Actions
+Most of the advanced features are used in this pipeline workflows
+
+# Future Items
+## Automated API promotion using GitHub Actions
+## Flex CD Deployment
+## Etc..
