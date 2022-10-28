@@ -36,8 +36,3 @@ Environment specific variables:
 3. CloudHub Deployment using username/password [Aug/2021]
 ## GitHub Actions
 Most of the advanced features are used in this pipeline workflows
-
-# Future Items
-## Automated API promotion using GitHub Actions
-## Flex CD Deployment
-## Etc..
