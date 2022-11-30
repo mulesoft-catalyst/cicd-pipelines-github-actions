@@ -15,7 +15,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<mule.version>4.4.0</mule.version>
 		<mule.maven.plugin.version>3.5.4</mule.maven.plugin.version>
-		<tags />
+		<tags/>
 		<categories>[]</categories>
 		<maven.release.plugin.version>3.0.4</maven.release.plugin.version>
 		<project.scm.id>github</project.scm.id>
@@ -173,18 +173,17 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-        <scm>
+	<scm>
 		<connection>scm:git:https://github.com/naaab/github-action-mule.git</connection>
 		<url>scm:git:https://github.com/naaab/github-action-mule.git</url>
-    	        <developerConnection>scm:git:https://github.com/naaab/github-action-mule.git</developerConnection>
-    	        <tag>pub-common-health-check-1.0.9</tag>
-        </scm>	
-
+		<developerConnection>scm:git:https://github.com/naaab/github-action-mule.git</developerConnection>
+		<tag>pub-common-health-check-1.0.9</tag>
+	</scm>
 	<distributionManagement>
 		<repository>
 			<id>github</id>
 			<name>github</name>
-			<url>https://maven.pkg.github.com/naaab/github-action-mule</url>  
+			<url>https://maven.pkg.github.com/naaab/github-action-mule</url>
 		</repository>
 	</distributionManagement>
 </project>
