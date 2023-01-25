@@ -1,6 +1,6 @@
 <!-- CICD Pipelines for mule application deployment to cloudhub using GitHub Actions  -->
 # Branch Details
-There are mainly two branches. Aug/1/2021 :
+There are two branches. Aug/1/2021 :
 1. main
 2. develop
 
