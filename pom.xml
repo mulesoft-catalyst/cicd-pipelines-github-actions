@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>601dfad5-7be8-47f4-a62f-6df888b86612</groupId>
-	<artifactId>pub-common-health-check</artifactId>
+	<groupId>CHANGE-ME-BUSINESS-GROUP-ID</groupId>
+	<artifactId>pub-common-health-check-ch-1</artifactId>
 	<version>1.0.19-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
@@ -93,8 +93,9 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
-						<username>${anypoint.userName}</username>
-						<password>${anypoint.password}</password>
+						<connectedAppClientId>${connectedApp.clientId}</connectedAppClientId>
+						<connectedAppClientSecret>${connectedApp.clientSecret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${cloudhub.environment}-${project.artifactId}</applicationName>
 						<environment>${cloudhub.environment}</environment>
 						<workerType>${cloudhub.workerType}</workerType>
